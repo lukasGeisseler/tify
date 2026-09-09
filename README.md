@@ -8,7 +8,7 @@ TIFY is a slim and mobile-friendly [IIIF](https://iiif.io/) document viewer buil
 
 **[Check out the demo.](https://tify-iiif-viewer.github.io/tify/)**
 
-Continue reading to learn how to integrate TIFY into your website or application and about its options and API, [visit the website for usage examples](https://tify.rocks/), or [have a look at the documentation](doc).
+Continue reading to learn how to integrate TIFY into your website or application and about its options and API, [visit the website for usage examples](https://tify.rocks/), or [have a look at the documentation](doc/index.md).
 
 ## Embedding TIFY
 
@@ -41,10 +41,10 @@ Include TIFY:
 	- Otherwise, upload everything from `node_modules/tify/dist` to your web server and add this to the HTML output:
 
 		``` html
-		<link rel="stylesheet" href="tify.css?0.35.0">
+		<link rel="stylesheet" href="tify.css?0.36.2">
 
 		<script type="module">
-		import Tify from './tify.js?0.35.0'
+		import Tify from './tify.js?0.36.2'
 
 		new Tify({
 		  container: '#tify',
@@ -53,15 +53,15 @@ Include TIFY:
 		</script>
 		```
 
-		Adjust the paths as needed. Appending `?0.35.0` prevents caching issues when upgrading.
+		Adjust the paths as needed. Appending `?0.36.2` prevents caching issues when upgrading.
 
 - Or use a <abbr title="Content Delivery Network">CDN</abbr> like [jsDelivr](https://www.jsdelivr.com/package/npm/tify) or [UNPKG](https://app.unpkg.com/tify):
 
 	``` html
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tify@0.35.0/dist/tify.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tify@0.36.2/dist/tify.css">
 
 	<script type="module">
-	import Tify from 'https://cdn.jsdelivr.net/npm/tify@0.35.0/dist/tify.js'
+	import Tify from 'https://cdn.jsdelivr.net/npm/tify@0.36.2/dist/tify.js'
 
 	new Tify({
 	  container: '#tify',
@@ -84,6 +84,7 @@ An example with most options set to non-default values:
 
 ``` js
 new Tify({
+  colorMode: 'dark',
   container: '#tify',
   language: 'de',
   manifestUrl: 'https://example.org/iiif-manifest.json',
@@ -97,6 +98,11 @@ new Tify({
   viewer: {
     immediateRender: false,
   },
+  views: [
+    'info',
+    'collection',
+    'thumbnails',
+  ],
   zoom: 1.2,
 })
 ```

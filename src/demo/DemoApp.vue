@@ -111,7 +111,7 @@ export default {
 			v-for="instance in instances"
 			:key="instance.id"
 			class="instance"
-			:style="`color-scheme: ${instance.colorMode === 'auto' ? 'light dark' : instance.colorMode}`"
+			:style="`color-scheme: ${instance.colorMode === 'system' ? 'light dark' : instance.colorMode}`"
 		>
 			<DemoHeader
 				:instance="instance"
@@ -131,7 +131,10 @@ export default {
 					<div class="sidebar-header">
 						<h1 class="logo">
 							<!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
-							<a href=".">
+							<a
+								href="javascript:;"
+								@click="removeInstance(instance)"
+							>
 								<TifyLogo />
 							</a>
 						</h1>
@@ -286,7 +289,6 @@ button {
 			align-items: start;
 			flex: 0 0 $demo-sidebar-width;
 			justify-content: start;
-			position: absolute;
 			position: static;
 		}
 	}

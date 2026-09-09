@@ -2,7 +2,7 @@
 
 export default class Instance {
 	constructor(options = {}) {
-		this.colorMode = 'auto'; // TODO: Store in URL?
+		this.colorMode = 'system'; // TODO: Store in URL?
 		this.hasContentState = !!(new URL(window.location)).searchParams.get('iiif-content');
 		this.id = options.id;
 		this.language = options.language || 'en';
@@ -45,15 +45,16 @@ export default class Instance {
 			window.history.pushState(null, '', url.toString());
 		}
 
-		// TODO: Allow to add custom TIFY options like translation overrides
-
 		this.tify = new Tify({
-			container: document.getElementById(`container${this.id}`),
-			colorMode: this.colorMode,
-			contentStateEnabled: this.hasContentState,
-			language: this.language,
-			manifestUrl: this.manifestUrl,
-			urlQueryKey: `tify${this.id}`,
+			...window.tifyConfig,
+			...{
+				container: document.getElementById(`container${this.id}`),
+				colorMode: this.colorMode,
+				contentStateEnabled: this.hasContentState,
+				language: this.language,
+				manifestUrl: this.manifestUrl,
+				urlQueryKey: `tify${this.id}`,
+			},
 		});
 
 		this.tify.ready.then(() => Instance.updateDocumentTitle());

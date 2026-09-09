@@ -49,11 +49,6 @@ export default {
 
 			return this.$store.manifest || this.$store.collection || {};
 		},
-		metadataItems() {
-			return this.$store.manifest.items
-				.map((item, index) => ({ metadata: item.metadata, number: index + 1 }))
-				.filter(({ metadata, number }) => metadata?.length && this.$store.options.pages.includes(number));
-		},
 		pages() {
 			return this.$store.options.pages.filter((page) => page > 0).map((page) => {
 				const pageItem = {
@@ -195,7 +190,7 @@ export default {
 			class="tify-info-section -pages"
 		>
 			<h3>{{ $translate(pages.length > 1 ? 'Current Pages' : 'Current Page') }}</h3>
-			<ol class="tify-list -unstyled">
+			<ol class="tify-info-pages">
 				<li
 					v-for="page in pages"
 					:key="page"
@@ -251,14 +246,6 @@ export default {
 		</div>
 
 		<div
-			v-if="manifestOrCollection.requiredStatement"
-			class="tify-info-section -attribution"
-		>
-			<h3>{{ $store.localize(manifestOrCollection.requiredStatement.label) }}</h3>
-			<div v-html="filterHtml($store.localize(manifestOrCollection.requiredStatement.value))" />
-		</div>
-
-		<div
 			v-if="manifestOrCollection.rights"
 			class="tify-info-section -license"
 		>
@@ -266,6 +253,14 @@ export default {
 			<p>
 				<a :href="manifestOrCollection.rights">{{ manifestOrCollection.rights }}</a>
 			</p>
+		</div>
+
+		<div
+			v-if="manifestOrCollection.requiredStatement"
+			class="tify-info-section -attribution"
+		>
+			<h3>{{ $store.localize(manifestOrCollection.requiredStatement.label) }}</h3>
+			<div v-html="filterHtml($store.localize(manifestOrCollection.requiredStatement.value))" />
 		</div>
 
 		<div

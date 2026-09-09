@@ -13,21 +13,15 @@ export default {
 		},
 	},
 	computed: {
-		classes() {
-			return {
-				L: 'tify-page-name-label',
-				P: 'tify-page-name-number',
-			};
-		},
 		label() {
 			return striptags(this.$store.localize(this.$store.manifest.items[this.number - 1].label))
 				|| this.$translate('$n/a');
 		},
 		html() {
 			return `<span>${this.$store.options.pageLabelFormat}</span>`
-				.replace('L', `</span>${this.label}<span>`)
 				.replace('P', `${this.number}`)
 				.replace('T', `${this.$store.pageCount}`)
+				.replace('L', `</span>${this.label}<span>`) // must be last letter replacement
 				.replace('<span></span>', '');
 		},
 	},
