@@ -1,15 +1,15 @@
 {
 	"$language": "Rumantsch Grischun",
-	"Add instance": "",
-	"automatic": "",
-	"Collection": "",
-	"Color mode": "",
-	"dark": "",
-	"IIIF manifest URL": "",
-	"Language": "",
-	"light [adjective]": "",
-	"Load": "",
-	"Remove instance": "",
-	"Sample IIIF manifests": "",
-	"Toggle sidebar": ""
+	"Add instance": "Agiuntar instanza",
+	"automatic": "automatic",
+	"Collection": "Collecziun",
+	"Color mode": "Modus da colur",
+	"dark": "stgir",
+	"IIIF manifest URL": "URL dal manifest IIIF",
+	"Language": "Lingua",
+	"light [adjective]": "cler",
+	"Load": "Chargiar",
+	"Remove instance": "Allontanar instanza",
+	"Sample IIIF manifests": "Exempels da manifests IIIF",
+	"Toggle sidebar": "Activar trav laterala"
 }
